@@ -1,6 +1,4 @@
-# BookStore
-
-# # Book Store - Gamesy Tech Test
+# Book Store - Gamesy Tech Test
 
 ## Brief
 
