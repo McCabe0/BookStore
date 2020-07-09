@@ -2,10 +2,7 @@ package com.jackmccabe.model;
 
 import com.jackmccabe.model.Book;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class BooksInStore {
 
@@ -49,20 +46,17 @@ public class BooksInStore {
         ArrayList<Book> checkoutBooks = new ArrayList<>();
         boolean advanceToCheckout = false;
 
-        while (advanceToCheckout != true){
-            System.out.println("Please Enter the ID of the Book you want to Buy: ");
+        do {
             Scanner userInput = new Scanner(System.in);
-
+            System.out.println("Please Enter the ID of the Book you want to Buy: ");
             try {
-                int input = userInput.nextInt(); //User to input the ID of the book they want
+                int input = userInput.nextInt();
                 if (input != 0) {
                     checkoutBooks.add(findBookById(input));
                 }
-
                 System.out.println("Your Current Basket: ");
                 displayAllBooksInList(checkoutBooks);
                 System.out.println("Type 0 to go to Checkout ");
-
                 if (input == 0) {
                     if (checkoutBooks.isEmpty()) {
                         System.out.println("Please add to basket");
@@ -70,11 +64,11 @@ public class BooksInStore {
                         advanceToCheckout = true;
                     }
                 }
-
-            } catch (Exception e){
-                System.out.println("Please type in a Correct ID");
+            }catch (Exception e){
+                System.out.println("Please type in a Number");
             }
-        }
+
+        }while (advanceToCheckout != true);
 
         System.out.println("The total price is £" +
                 String.format("%.2f",new BusinessLogic().getPriceOfAListOfBooks(checkoutBooks, 30, 0.95)));
